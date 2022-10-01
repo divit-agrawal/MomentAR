@@ -59,7 +59,7 @@ public class ScreenShot : MonoBehaviour
             Sprite sprite = Sprite.Create(currentCapture, new Rect(0, 0, Screen.width, Screen.height), new Vector2(0, 0));
             if (image)
             {
-                GameObject child = img.transform.GetChild(0).gameObject;
+                GameObject child = image.transform.GetChild(0).gameObject;
                 SpriteRenderer spr = child.GetComponent<SpriteRenderer>();
                 spr.sprite = sprite;
                 image.transform.position = head.transform.position + position;
