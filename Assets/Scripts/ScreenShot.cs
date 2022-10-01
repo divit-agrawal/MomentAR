@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class ScreenShot : MonoBehaviour
 {
-    SpriteRenderer image;
-    [SerializeField] SpriteRenderer img;
+    GameObject image;
+    [SerializeField] GameObject img;
     private Texture2D currentCapture;
     bool isCapturing = false;
     Vector3 position;
@@ -59,7 +59,9 @@ public class ScreenShot : MonoBehaviour
             Sprite sprite = Sprite.Create(currentCapture, new Rect(0, 0, Screen.width, Screen.height), new Vector2(0, 0));
             if (image)
             {
-                image.sprite = sprite;
+                GameObject child = img.transform.GetChild(0).gameObject;
+                SpriteRenderer spr = child.GetComponent<SpriteRenderer>();
+                spr.sprite = sprite;
                 image.transform.position = head.transform.position + position;
                 image.transform.LookAt(head);
                 Vector3 theScale = image.transform.localScale;
